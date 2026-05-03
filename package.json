@@ -1,0 +1,14 @@
+{
+  "name": "hoseokwon99.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "hugo server --buildDrafts",
+    "build": "hugo --minify",
+    "index": "pagefind --site public",
+    "build:search": "npm run build && npm run index"
+  },
+  "devDependencies": {
+    "pagefind": "^1.5.2"
+  }
+}

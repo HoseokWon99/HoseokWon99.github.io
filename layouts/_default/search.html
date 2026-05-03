@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="page-heading">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </section>
+  <div id="search" class="search-box" data-lang="{{ .Language.Lang }}">
+    <p>{{ if eq .Language.Lang "ko" }}검색 인덱스를 불러오는 중입니다.{{ else }}Loading search index.{{ end }}</p>
+  </div>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const element = document.getElementById("search");
+      const lang = element?.dataset.lang || "en";
+      if (!window.PagefindUI || !element) return;
+      element.textContent = "";
+      new PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        excerptLength: 24,
+        filters: { lang }
+      });
+    });
+  </script>
+{{ end }}

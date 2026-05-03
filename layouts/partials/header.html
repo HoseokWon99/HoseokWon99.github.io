@@ -1,0 +1,20 @@
+<header class="site-header">
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <div class="nav-links" id="site-menu">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+      {{ end }}
+      {{ partial "language-switcher.html" . }}
+    </div>
+  </nav>
+</header>
+<script>
+  document.querySelector(".nav-toggle")?.addEventListener("click", (event) => {
+    const button = event.currentTarget;
+    const expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!expanded));
+    document.querySelector(".nav-links")?.classList.toggle("is-open", !expanded);
+  });
+</script>

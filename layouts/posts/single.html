@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <article class="post" data-pagefind-body data-pagefind-filter="lang:{{ .Language.Lang }}">
+    <header class="post-header">
+      <p class="post-date">{{ .Date.Format "2006-01-02" }}</p>
+      <h1 data-pagefind-meta="title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="description" data-pagefind-meta="description">{{ . }}</p>{{ end }}
+      {{ partial "taxonomy-links.html" . }}
+      {{ if .Translations }}
+        <div class="translation-links">
+          {{ range .Translations }}
+            <a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </header>
+    {{ if .TableOfContents }}
+      <aside class="toc" aria-label="Table of contents">
+        <h2>{{ if eq .Language.Lang "ko" }}목차{{ else }}Contents{{ end }}</h2>
+        {{ .TableOfContents }}
+      </aside>
+    {{ end }}
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}

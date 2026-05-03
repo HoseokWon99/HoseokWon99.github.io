@@ -1,0 +1,6 @@
+<article class="post-card">
+  <p class="post-date">{{ .Date.Format "2006-01-02" }}</p>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  {{ with .Description }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+  {{ partial "taxonomy-links.html" . }}
+</article>

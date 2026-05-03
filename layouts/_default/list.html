@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <section class="page-heading">
+    <h1>{{ .Title }}</h1>
+  </section>
+  <div class="post-list">
+    {{ range .Paginator.Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+  {{ template "_internal/pagination.html" . }}
+{{ end }}

@@ -1,0 +1,8 @@
+<div class="meta-links">
+  {{ range .GetTerms "categories" }}
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{ end }}
+  {{ range .GetTerms "tags" }}
+    <a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</div>

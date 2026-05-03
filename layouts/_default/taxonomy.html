@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <section class="page-heading">
+    <p class="eyebrow">
+      {{ if eq .Language.Lang "ko" }}
+        {{ if eq .Data.Singular "tag" }}태그{{ else }}카테고리{{ end }}
+      {{ else }}
+        {{ if eq .Data.Singular "tag" }}Tag{{ else }}Category{{ end }}
+      {{ end }}
+    </p>
+    <h1>{{ .Title }}</h1>
+  </section>
+  <div class="post-list">
+    {{ range .Paginator.Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+  {{ template "_internal/pagination.html" . }}
+{{ end }}

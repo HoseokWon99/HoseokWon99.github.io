@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <section class="page-heading">
+    <h1>
+      {{ if eq .Language.Lang "ko" }}
+        {{ if eq .Data.Plural "tags" }}태그{{ else }}카테고리{{ end }}
+      {{ else }}
+        {{ .Title }}
+      {{ end }}
+    </h1>
+  </section>
+  <div class="term-cloud large">
+    {{ range .Data.Terms.ByCount }}
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>
+    {{ end }}
+  </div>
+{{ end }}

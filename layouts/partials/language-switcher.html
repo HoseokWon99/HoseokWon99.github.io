@@ -1,0 +1,12 @@
+<div class="language-switcher" aria-label="Language switcher">
+  {{ range .AllTranslations }}
+    <a class="{{ if eq .Language.Lang $.Language.Lang }}is-active{{ end }}" href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
+  {{ end }}
+  {{ if eq (len .AllTranslations) 1 }}
+    {{ range .Site.Home.AllTranslations }}
+      {{ if ne .Language.Lang $.Site.Language.Lang }}
+        <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>

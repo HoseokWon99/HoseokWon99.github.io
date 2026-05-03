@@ -1,0 +1,44 @@
+{{ define "main" }}
+  <section class="hero">
+    <p class="eyebrow">{{ .Site.Language.LanguageName }}</p>
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+    <div class="hero-actions">
+      <a class="button" href="{{ "/posts/" | relLangURL }}">{{ if eq .Language.Lang "ko" }}글 보기{{ else }}Read posts{{ end }}</a>
+      <a class="button button-secondary" href="{{ "/search/" | relLangURL }}">{{ if eq .Language.Lang "ko" }}검색{{ else }}Search{{ end }}</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>{{ if eq .Language.Lang "ko" }}최근 글{{ else }}Recent posts{{ end }}</h2>
+      <a href="{{ "/posts/" | relLangURL }}">{{ if eq .Language.Lang "ko" }}전체 보기{{ else }}View all{{ end }}</a>
+    </div>
+    <div class="post-list">
+      {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+        {{ partial "post-card.html" . }}
+      {{ else }}
+        <p>{{ if eq .Language.Lang "ko" }}아직 글이 없습니다.{{ else }}No posts yet.{{ end }}</p>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="taxonomy-grid">
+    <div>
+      <h2>{{ if eq .Language.Lang "ko" }}카테고리{{ else }}Categories{{ end }}</h2>
+      <div class="term-cloud">
+        {{ range .Site.Taxonomies.categories.ByCount }}
+          <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>
+        {{ end }}
+      </div>
+    </div>
+    <div>
+      <h2>{{ if eq .Language.Lang "ko" }}태그{{ else }}Tags{{ end }}</h2>
+      <div class="term-cloud">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+          <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

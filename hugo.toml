@@ -1,0 +1,93 @@
+baseURL = "https://HoseokWon99.github.io/"
+title = "Hoseok Won"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
+summaryLength = 24
+hasCJKLanguage = true
+
+[pagination]
+pagerSize = 10
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[markup]
+[markup.highlight]
+style = "github"
+noClasses = false
+[markup.goldmark.renderer]
+unsafe = true
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [["$$", "$$"]]
+inline = [["$", "$"]]
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+ordered = false
+
+[languages]
+[languages.en]
+languageName = "English"
+languageCode = "en-us"
+contentDir = "content/en"
+weight = 1
+title = "Hoseok Won"
+[languages.en.params]
+description = "Technical notes, projects, and mathematical writing."
+
+[languages.ko]
+languageName = "한국어"
+languageCode = "ko-kr"
+contentDir = "content/ko"
+weight = 2
+title = "원호석"
+[languages.ko.params]
+description = "기술 노트, 프로젝트, 수식이 있는 글을 정리합니다."
+
+[params]
+author = "Hoseok Won"
+mainSections = ["posts"]
+
+[[languages.en.menus.main]]
+name = "Posts"
+pageRef = "/posts"
+weight = 10
+
+[[languages.en.menus.main]]
+name = "Categories"
+pageRef = "/categories"
+weight = 20
+
+[[languages.en.menus.main]]
+name = "Tags"
+pageRef = "/tags"
+weight = 30
+
+[[languages.en.menus.main]]
+name = "Search"
+pageRef = "/search"
+weight = 40
+
+[[languages.ko.menus.main]]
+name = "글"
+pageRef = "/posts"
+weight = 10
+
+[[languages.ko.menus.main]]
+name = "카테고리"
+pageRef = "/categories"
+weight = 20
+
+[[languages.ko.menus.main]]
+name = "태그"
+pageRef = "/tags"
+weight = 30
+
+[[languages.ko.menus.main]]
+name = "검색"
+pageRef = "/search"
+weight = 40
